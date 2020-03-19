@@ -3,6 +3,6 @@
 
 #Ignore Builds
 
-./*/build/*.*
+./**/build/*.*
 
-./*/simbuild/*.*
+./**/simbuild/*.*
