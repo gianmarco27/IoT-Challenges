@@ -4,5 +4,9 @@
 #Ignore Builds
 
 ./**/build/*.*
+./**/build/*
+./**/build/**
 
 ./**/simbuild/*.*
+./**/simbuild/*
+./**/simbuild/**
