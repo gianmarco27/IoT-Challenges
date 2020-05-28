@@ -1,7 +1,6 @@
 #include "randomSender.h"
 #include "Timer.h"
 #include "printf.h"
-
 module randomSender {
 
   uses {
@@ -18,7 +17,7 @@ module randomSender {
 
 } implementation {
 
-	int value;
+	uint value;
 
 	message_t packet;
 
@@ -28,8 +27,9 @@ module randomSender {
 	 if (msg == NULL) {
 		return;
 	  }
-
-	 msg->value = rand()%655535;
+	 value = rand();
+	 value = (value % 101 + 101) % 101;
+	 msg->value = value;
 	 if(TOS_NODE_ID == 2){
 	 	msg->topic = MOTE2;
 	 }else if(TOS_NODE_ID == 3){
@@ -53,6 +53,7 @@ module randomSender {
   	if(err == SUCCESS) {
   		if(TOS_NODE_ID == 2 || TOS_NODE_ID == 3){
   			call MilliTimer.startPeriodic( 5000 );
+  			srand(TOS_NODE_ID);
   		}
   	}else{
   		call SplitControl.start();
@@ -78,10 +79,11 @@ module randomSender {
 	 }else{
 	 	my_msg_t *msg = (my_msg_t*)payload;
 	 	value = msg->value;
-	 	printf("%d\n", value);
-	 	printf("/challenge4/mote%d \n", msg->topic);
+
+	 	printf("value:%d ", value);
+ 		printf("/mote%d.bufferflush\n", msg->topic);
 	 	printfflush();
-	 	
+	 	return buf;
 	 }
 
   }
