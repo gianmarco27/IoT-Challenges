@@ -11,7 +11,7 @@ typedef nx_struct my_msg {
 #define MOTE3 3
 
 enum{
-AM_MY_MSG = 6,
+AM_MY_MSG = 6
 };
 
 #endif

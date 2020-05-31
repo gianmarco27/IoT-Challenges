@@ -37,10 +37,7 @@ module randomSender {
 	 }
 	
 	 
-	 if(call AMSend.send(1, &packet,sizeof(my_msg_t)) == SUCCESS){
-	    
-		 
-  	}
+	call AMSend.send(1, &packet,sizeof(my_msg_t));
 	 
  }
 
